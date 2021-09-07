@@ -6,13 +6,15 @@ public class PhysicsJump : MonoBehaviour
 {
     [SerializeField] private BoxGroundChecker GroundChecker;
     [SerializeField] private Rigidbody RB;
+
+    [SerializeField] private PhysicsMovement PM;
     [SerializeField] private InputController IC;
 
-    public void Jump(string _jumpKeyCode)
+    public void Jump(string _jumpKeyCode, Vector3 move)
     {
         if (Input.GetAxisRaw(_jumpKeyCode) > 0 && GroundChecker.isGrounded)
         {
-            Vector3 jump = new Vector3(RB.velocity.x, IC._jumpForce * 2f, RB.velocity.z);
+            Vector3 jump = new Vector3(move.x * PM.speed * 0.5f, IC._jumpForce * 2f, move.z * PM.speed * 0.5f);
             RB.velocity = new Vector3(RB.velocity.x, 0f, RB.velocity.z);
             RB.velocity = jump;
             StartCoroutine(GravityChange(IC._gravityAnimation, GroundChecker.isGrounded));

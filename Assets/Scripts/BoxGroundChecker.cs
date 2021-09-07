@@ -18,9 +18,4 @@ public class BoxGroundChecker : MonoBehaviour
     {
         isGrounded = Physics.CheckBox(transform.position, colider.bounds.extents, Quaternion.identity, ground);
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, colider.bounds.extents);
-    }
 }
