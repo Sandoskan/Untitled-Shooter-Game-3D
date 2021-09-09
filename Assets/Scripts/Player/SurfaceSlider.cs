@@ -14,13 +14,13 @@ public class SurfaceSlider : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if(collision.gameObject.layer == 7)
+        if(collision.gameObject.layer == 6)
             _normal = collision.contacts[0].normal;
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        //if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == 6)
             _normal = collision.contacts[0].normal;
     }
 

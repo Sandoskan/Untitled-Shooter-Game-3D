@@ -17,7 +17,6 @@ public class PhysicsMovement : MonoBehaviour
 
     public void Move(Vector3 move)
     {
-        Debug.Log(RB.velocity);
         Vector3 directionAlongSurface = _surfaceSlider.Project(move);
         Vector3 offset = directionAlongSurface * (_speed * Time.deltaTime);
 

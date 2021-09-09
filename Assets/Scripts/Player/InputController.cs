@@ -37,7 +37,6 @@ public class InputController : MonoBehaviour
         Vector3 move =  CalabrateObject.transform.right * sumY + CalabrateObject.transform.forward * sumX;
 
         PJ.Jump(_jumpKeycode, move);
-        Debug.Log(Physics.gravity);
         PM.Move(move);
     }
 }
