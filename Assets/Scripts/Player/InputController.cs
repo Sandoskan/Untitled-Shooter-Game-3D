@@ -24,6 +24,7 @@ public class InputController : MonoBehaviour
     [SerializeField] private PhysicsJump PJ;
     [SerializeField] private Transform CalabrateObject;
 
+
     private void Update()
     {
         float xPos = Input.GetAxis(axeXPos);
