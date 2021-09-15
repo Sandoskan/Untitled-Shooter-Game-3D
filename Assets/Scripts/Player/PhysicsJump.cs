@@ -10,6 +10,13 @@ public class PhysicsJump : MonoBehaviour
     [SerializeField] private PhysicsMovement PM;
     [SerializeField] private InputController IC;
 
+    private Vector3 startGravity;
+
+    private void Awake()
+    {
+        startGravity = Physics.gravity;
+    }
+
     public void Jump(string _jumpKeyCode, Vector3 move)
     {
         if (Input.GetAxisRaw(_jumpKeyCode) > 0 && GroundChecker.isGrounded)
@@ -27,14 +34,13 @@ public class PhysicsJump : MonoBehaviour
         float expiredSeconds = 0f;
         float progress = 0f;
 
-        Vector3 startGravity = Physics.gravity;
-
-        while(progress < 1 || isGround == false)
+        while(isGround == false || progress < 1)
         {
             expiredSeconds += Time.deltaTime;
             progress = expiredSeconds / duraction;
 
             Physics.gravity = startGravity + new Vector3(0, -(_gravityScale.Evaluate(progress) * 6f), 0);
+            Debug.Log(Physics.gravity);
 
             yield return null;
         }
