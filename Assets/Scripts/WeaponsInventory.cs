@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class WeaponsInventory : MonoBehaviour
 {
     private enum State {Knife, Pistol, Shotgun, SuperShotgun, Machinegun, Railgun, StickyLauncher, PizdechGun};
@@ -15,6 +16,27 @@ public class WeaponsInventory : MonoBehaviour
     [SerializeField] private int explodeBullets;
     [SerializeField] private int specialBullets;
 
+    public bool[] GetAvailableWeapons()
+    {
+        return weaponsAvailable;
+    }
+    public int[] GetKeycodes()
+    {
+        int[] tmp = new int[weaponKeycodes.Length];
+        for(int i = 0; i < weaponKeycodes.Length; i++)
+        {
+            tmp[i] = (int)weaponKeycodes[i];
+        }
+
+        return tmp;
+    }
+    public int[] GetAmmos()
+    {
+        int[] tmp = new int[4] { pistolBullets, shotgunBullets, explodeBullets, specialBullets };
+        return tmp;
+    }
+
+
     private void Awake()
     {
         for (int i = 0; i < (int)Weapon.WeaponType.PizdechGun; i++)
@@ -25,6 +47,40 @@ public class WeaponsInventory : MonoBehaviour
                 Debug.Log(_currectState);
             }
         }
+    }
+
+    public WeaponsInventory (WeaponsInventory weaponsInventory)
+    {
+        weaponsAvailable = weaponsInventory.weaponsAvailable;
+        weaponKeycodes = weaponsInventory.weaponKeycodes;
+
+        pistolBullets = weaponsInventory.pistolBullets;
+        shotgunBullets = weaponsInventory.shotgunBullets;
+        explodeBullets = weaponsInventory.explodeBullets;
+        specialBullets = weaponsInventory.specialBullets;
+    }
+
+    public void SaveData()
+    {
+        SaveSystem.SaveData(this);
+    }
+
+    public void LoadData()
+    {
+        PlayerData data = SaveSystem.LoadDataWI();
+
+        weaponsAvailable = data.weaponsAvailable;
+        for(int i = 0; i < weaponKeycodes.Length; i++)
+        {
+            int[] tmp = data.weaponKeycodes;
+            KeyCode keyCode = (KeyCode)tmp[i];
+            weaponKeycodes[i] = keyCode;
+        }
+
+        pistolBullets = data.pistolBullets;
+        shotgunBullets = data.shotgunBullets;
+        explodeBullets = data.explodeBullets;
+        specialBullets = data.specialBullets;
     }
 
     private void Update()
