@@ -389,6 +389,7 @@ InputManager:
     type: 0
     axis: 1
     joyNum: 0
+<<<<<<< HEAD
   - serializedVersion: 3
     m_Name: Submit
     descriptiveName: 
@@ -421,3 +422,5 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 0
+=======
+>>>>>>> 5dc6031b54344465153a7a96c67c22939695b919

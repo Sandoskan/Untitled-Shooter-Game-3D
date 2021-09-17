@@ -44,8 +44,11 @@ public class StickyScript : MonoBehaviour
                     Debug.Log(rb);
                     rb.AddExplosionForce(10f, transform.position, _blastRadius, 3f, ForceMode.VelocityChange);
                 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5dc6031b54344465153a7a96c67c22939695b919
             }
         }
 

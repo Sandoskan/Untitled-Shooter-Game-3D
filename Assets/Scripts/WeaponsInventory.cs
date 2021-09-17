@@ -16,6 +16,7 @@ public class WeaponsInventory : MonoBehaviour
     [SerializeField] private int explodeBullets;
     [SerializeField] private int specialBullets;
 
+<<<<<<< HEAD
     public bool[] GetAvailableWeapons()
     {
         return weaponsAvailable;
@@ -37,6 +38,8 @@ public class WeaponsInventory : MonoBehaviour
     }
 
 
+=======
+>>>>>>> 5dc6031b54344465153a7a96c67c22939695b919
     private void Awake()
     {
         for (int i = 0; i < (int)Weapon.WeaponType.PizdechGun; i++)
@@ -49,6 +52,7 @@ public class WeaponsInventory : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     public WeaponsInventory (WeaponsInventory weaponsInventory)
     {
         weaponsAvailable = weaponsInventory.weaponsAvailable;
@@ -83,6 +87,8 @@ public class WeaponsInventory : MonoBehaviour
         specialBullets = data.specialBullets;
     }
 
+=======
+>>>>>>> 5dc6031b54344465153a7a96c67c22939695b919
     private void Update()
     {
         PressWeaponKeycode();
